@@ -10,12 +10,12 @@ import pandas as pd
 # Load the images you want to analyze
 
 filenames = [
-    r"../images/MASK_SK658 Llobe ch010039.jpg",
-    r"../images/MASK_SK658 Slobe ch010066.jpg",
-    r"../images/MASK_SK658 Slobe ch010147.jpg",
-    r"../images/MASK_SK658 Slobe ch010110.jpg",
-    r"../images/MASK_SK658 Slobe ch010130.jpg",
-    r"../images/MASK_SK658 Slobe ch010114.jpg",
+    r"images\MASK_Sk658 Llobe ch010039.jpg",
+    r"images\MASK_SK658 Slobe ch010066.jpg",
+    r"images\MASK_SK658 Slobe ch010147.jpg",
+    r"images\MASK_SK658 Slobe ch010110.jpg",
+    r"images\MASK_SK658 Slobe ch010130.jpg",
+    r"images\MASK_SK658 Slobe ch010114.jpg",
 ]
 
 # Enter the depth of each image (in the same order that the images are listed above; you can find these in the .csv file provided to you which is tilted: "Filenames and Depths for Students")
@@ -47,8 +47,8 @@ for filename in filenames:
 for x in range(len(filenames)):
     _, binary = cv2.threshold(images[x], 127, 255, cv2.THRESH_BINARY)
 
-    white = np.sum(binary == 255)
-    black = np.sum(binary == 0)
+    white = np.count_nonzero(binary == 255)
+    black = binary.size - white
 
     white_counts.append(white)
     black_counts.append(black)
@@ -136,7 +136,6 @@ print("The .csv file 'Percent_White_Pixels.csv' has been created.")
 # axs[1].grid(True)
 # axs[1].scatter(depths_i[len(depths_i)-1], white_percents_i[len(white_percents_i)-1],
 #                color='red', s=100, label='Highlighted point')
-
 
 # # Adjust layout to prevent overlap
 # plt.tight_layout()
