@@ -19,7 +19,7 @@ filenames = [
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010168.jpg",
 ]
 
-# Enter the depth of each image (in the same order that the images are listed above)
+# Enter the corresponding depth of each image (in the same order that the images are listed above)
 
 depths = [
     1000,
