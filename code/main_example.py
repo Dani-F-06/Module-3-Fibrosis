@@ -7,18 +7,19 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 import pandas as pd
 
-# Load the images you want to analyze
+#AI STATEMENT: AI was utilized to generate a more efficient code up to line 93. 
 
+# Load 6 different images for analysis
 filenames = [
-    r"images\MASK_Sk658 Llobe ch010039.jpg",
-    r"images\MASK_SK658 Slobe ch010066.jpg",
-    r"images\MASK_SK658 Slobe ch010147.jpg",
-    r"images\MASK_SK658 Slobe ch010110.jpg",
-    r"images\MASK_SK658 Slobe ch010130.jpg",
-    r"images\MASK_SK658 Slobe ch010114.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Slobe ch010092.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Slobe ch010126.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Slobe ch010159.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Slobe ch010066.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010030.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010168.jpg",
 ]
 
-# Enter the depth of each image (in the same order that the images are listed above; you can find these in the .csv file provided to you which is tilted: "Filenames and Depths for Students")
+# Enter the depth of each image (in the same order that the images are listed above)
 
 depths = [
     15,
@@ -29,14 +30,14 @@ depths = [
     9900
 ]
 
-# Make the lists that will be used
+# Create lists for white pixel percentage calculations
 
 images = []
 white_counts = []
 black_counts = []
 white_percents = []
 
-# Build the list of all the images you are analyzing
+# Build the list of all the images used for analysis
 
 for filename in filenames:
     img = cv2.imread(filename, 0)
@@ -70,7 +71,7 @@ for x in range(len(filenames)):
 
 # Print the filename (on one line in red font), and below that line print the percent white pixels and depth into the lung where the image was obtained
 
-print(colored("Percent white px:", "yellow"))
+print(colored("Percent white pixel:", "yellow"))
 for x in range(len(filenames)):
     print(colored(f'{filenames[x]}:', "red"))
     print(f'{white_percents[x]}% White | Depth: {depths[x]} microns')
