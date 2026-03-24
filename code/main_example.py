@@ -22,12 +22,12 @@ filenames = [
 # Enter the depth of each image (in the same order that the images are listed above)
 
 depths = [
-    15,
     1000,
-    3000,
-    5300,
-    7000,
-    9900
+    6800,
+    860,
+    1000,
+    200,
+    6000
 ]
 
 # Create lists for white pixel percentage calculations
