@@ -17,6 +17,13 @@ filenames = [
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Slobe ch010066.jpg",
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010030.jpg",
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010168.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010039.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010021.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010017.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010036.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010019.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010022.jpg",
+    
 ]
 
 # Enter the corresponding depth of each image (in the same order that the images are listed above)
@@ -27,7 +34,13 @@ depths = [
     860,
     1000,
     200,
-    6000
+    6000,
+    15,
+    30,
+    45,
+    55,
+    60,
+    80
 ]
 
 # Create lists for white pixel percentage calculations
@@ -105,7 +118,7 @@ interpolate_depth = float(input(colored(
 x = depths
 y = white_percents
 
-# You can also use 'quadratic', 'cubic', etc.
+# Interpolate utilizing a linear model. 
 i = interp1d(x, y, kind='linear')
 interpolate_point = i(interpolate_depth)
 print(colored(
