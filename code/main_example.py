@@ -11,7 +11,7 @@ import pandas as pd
 
 # Load 6 different images for analysis
 filenames = [
-    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Slobe ch010092.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010061.jpg",
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Slobe ch010126.jpg",
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Slobe ch010159.jpg",
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Slobe ch010066.jpg",
@@ -22,14 +22,14 @@ filenames = [
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010017.jpg",
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010036.jpg",
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010019.jpg",
-    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010022.jpg",
+    r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010022.jpg"
     
 ]
 
 # Enter the corresponding depth of each image (in the same order that the images are listed above)
 
 depths = [
-    1000,
+    585,
     6800,
     860,
     1000,
@@ -120,6 +120,78 @@ y = white_percents
 
 # Interpolate utilizing a linear model. 
 i = interp1d(x, y, kind='linear')
+interpolate_point = i(interpolate_depth)
+print(colored(
+    f'The interpolated point is at the x-coordinate {interpolate_depth} and y-coordinate {interpolate_point}.', "green"))
+
+depths_i = depths[:]
+depths_i.append(interpolate_depth)
+white_percents_i = white_percents[:]
+white_percents_i.append(interpolate_point)
+
+
+# make two plots: one that doesn't contain the interpolated point, just the data calculated from your images, and one that also contains the interpolated point (shown in red)
+fig, axs = plt.subplots(2, 1)
+
+axs[0].scatter(depths, white_percents, marker='o', linestyle='-', color='blue')
+axs[0].set_title('Plot of depth of image vs percentage white pixels')
+axs[0].set_xlabel('depth of image (in microns)')
+axs[0].set_ylabel('white pixels as a percentage of total pixels')
+axs[0].grid(True)
+
+
+axs[1].scatter(depths_i, white_percents_i, marker='o',
+               linestyle='-', color='blue')
+axs[1].set_title(
+    'Plot of depth of image vs percentage white pixels with interpolated point (in red)')
+axs[1].set_xlabel('depth of image (in microns)')
+axs[1].set_ylabel('white pixels as a percentage of total pixels')
+axs[1].grid(True)
+axs[1].scatter(depths_i[len(depths_i)-1], white_percents_i[len(white_percents_i)-1],
+               color='red', s=100, label='Highlighted point')
+
+# Adjust layout to prevent overlap
+plt.tight_layout()
+plt.show()
+
+# Interpolate utilizing a quadratic model. 
+i = interp1d(x, y, kind='quadratic')
+interpolate_point = i(interpolate_depth)
+print(colored(
+    f'The interpolated point is at the x-coordinate {interpolate_depth} and y-coordinate {interpolate_point}.', "green"))
+
+depths_i = depths[:]
+depths_i.append(interpolate_depth)
+white_percents_i = white_percents[:]
+white_percents_i.append(interpolate_point)
+
+
+# make two plots: one that doesn't contain the interpolated point, just the data calculated from your images, and one that also contains the interpolated point (shown in red)
+fig, axs = plt.subplots(2, 1)
+
+axs[0].scatter(depths, white_percents, marker='o', linestyle='-', color='blue')
+axs[0].set_title('Plot of depth of image vs percentage white pixels')
+axs[0].set_xlabel('depth of image (in microns)')
+axs[0].set_ylabel('white pixels as a percentage of total pixels')
+axs[0].grid(True)
+
+
+axs[1].scatter(depths_i, white_percents_i, marker='o',
+               linestyle='-', color='blue')
+axs[1].set_title(
+    'Plot of depth of image vs percentage white pixels with interpolated point (in red)')
+axs[1].set_xlabel('depth of image (in microns)')
+axs[1].set_ylabel('white pixels as a percentage of total pixels')
+axs[1].grid(True)
+axs[1].scatter(depths_i[len(depths_i)-1], white_percents_i[len(white_percents_i)-1],
+               color='red', s=100, label='Highlighted point')
+
+# Adjust layout to prevent overlap
+plt.tight_layout()
+plt.show()
+
+# Interpolate utilizing a cubic model. 
+i = interp1d(x, y, kind='cubic')
 interpolate_point = i(interpolate_depth)
 print(colored(
     f'The interpolated point is at the x-coordinate {interpolate_depth} and y-coordinate {interpolate_point}.', "green"))
