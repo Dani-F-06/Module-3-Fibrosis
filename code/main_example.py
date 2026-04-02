@@ -9,7 +9,7 @@ import pandas as pd
 
 #AI STATEMENT: AI was utilized to generate a more efficient code up to line 93. 
 
-# Load 6 different images for analysis
+# Load 12 different images for analysis
 filenames = [
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Llobe ch010061.jpg",
     r"C:/Users/crown/OneDrive\Desktop/Comp_BME/Module-3-Fibrosis/images/MASK_SK658 Slobe ch010126.jpg",
